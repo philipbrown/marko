@@ -14,7 +14,7 @@ defmodule MarkoWeb.PageComponent do
       data-view={@tracking.view}
       class="bg-gray-100 min-h-screen p-6"
     >
-      <div class="bg-white rounded-md p-10 shadow-md flex flex-col space-y-8">
+      <div class="bg-white rounded-md p-10 shadow-sm flex flex-col space-y-8">
         <h1 class="text-4xl font-semibold">
           <%= render_slot(@title) %>
         </h1>
