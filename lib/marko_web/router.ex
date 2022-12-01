@@ -31,6 +31,12 @@ defmodule MarkoWeb.Router do
     end
   end
 
+  scope "/", MarkoWeb do
+    pipe_through :api
+
+    post "/tracking", TrackingController, :accept
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", MarkoWeb do
   #   pipe_through :api

@@ -27,7 +27,12 @@ defmodule MarkoWeb.PageCLive do
 
   def render(assigns) do
     ~H"""
-    <div>
+    <div
+      id="page_c"
+      phx-hook="Tracking"
+      data-session-id={@tracking.session_id}
+      data-view={@tracking.view}
+    >
       <h1>
         <%= Keyword.fetch!(@tabs, @live_action) %>
       </h1>

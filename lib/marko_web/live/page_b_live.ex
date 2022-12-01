@@ -11,7 +11,12 @@ defmodule MarkoWeb.PageBLive do
 
   def render(assigns) do
     ~H"""
-    <div>
+    <div
+      id="page_b"
+      phx-hook="Tracking"
+      data-session-id={@tracking.session_id}
+      data-view={@tracking.view}
+    >
       <h1>Page B</h1>
 
       <ul class="list-disc">
