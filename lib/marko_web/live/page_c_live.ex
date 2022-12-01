@@ -30,20 +30,20 @@ defmodule MarkoWeb.PageCLive do
     <div>
       <h1>
         <%= Keyword.fetch!(@tabs, @live_action) %>
-
-        <.live_component id="tab_list" active={@live_action} module={MarkoWeb.TabListComponent}>
-          <:tab id={:tab_1} title="Tab 1" path={~p"/page_c/tab_1"}>
-            <.link navigate={~p"/page_b"} class="underline">
-              Page B
-            </.link>
-          </:tab>
-          <:tab id={:tab_2} title="Tab 2" path={~p"/page_c/tab_2"}>
-            <.link navigate={~p"/page_a"} class="underline">
-              Page A
-            </.link>
-          </:tab>
-        </.live_component>
       </h1>
+
+      <.live_component id="tab_list" active={@live_action} module={MarkoWeb.TabListComponent}>
+        <:tab id={:tab_1} title="Tab 1" path={~p"/page_c/tab_1"}>
+          <.link navigate={~p"/page_b"} class="underline">
+            Page B
+          </.link>
+        </:tab>
+        <:tab id={:tab_2} title="Tab 2" path={~p"/page_c/tab_2"}>
+          <.link navigate={~p"/page_a"} class="underline">
+            Page A
+          </.link>
+        </:tab>
+      </.live_component>
     </div>
     """
   end
