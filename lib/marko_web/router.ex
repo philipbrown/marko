@@ -16,6 +16,16 @@ defmodule MarkoWeb.Router do
 
   scope "/", MarkoWeb do
     pipe_through :browser
+
+    live "/page_a", PageALive, :index
+    live "/page_b", PageBLive, :index
+
+    live "/page_c", PageCLive, :index
+
+    scope "/page_c", as: :page_c do
+      live "/tab_1", PageCLive, :tab_1
+      live "/tab_2", PageCLive, :tab_2
+    end
   end
 
   # Other scopes may use custom stacks.
