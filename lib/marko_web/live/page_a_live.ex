@@ -5,19 +5,16 @@ defmodule MarkoWeb.PageALive do
 
   use MarkoWeb, :live_view
 
+  import MarkoWeb.PageComponent
+
   def mount(_params, _session, socket) do
     {:ok, assign(socket, page_title: "Page A")}
   end
 
   def render(assigns) do
     ~H"""
-    <div
-      id="page_a"
-      phx-hook="Tracking"
-      data-session-id={@tracking.session_id}
-      data-view={@tracking.view}
-    >
-      <h1>Page A</h1>
+    <.page id="page_a" phx-hook="Tracking" tracking={@tracking}>
+      <:title>Page A</:title>
 
       <ul class="list-disc">
         <li>
@@ -31,7 +28,7 @@ defmodule MarkoWeb.PageALive do
           </.link>
         </li>
       </ul>
-    </div>
+    </.page>
     """
   end
 end

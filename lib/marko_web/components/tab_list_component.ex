@@ -11,8 +11,8 @@ defmodule MarkoWeb.TabListComponent do
 
   def render(assigns) do
     ~H"""
-    <div id={@id}>
-      <div>
+    <div id={@id} class="border border-gray-200">
+      <div class="flex bg-gray-100 divide-x divide-gray-200">
         <%= for {tab, i} <- Enum.with_index(@tab) do %>
           <button
             phx-click={
@@ -20,20 +20,21 @@ defmodule MarkoWeb.TabListComponent do
               |> JS.patch(tab.path)
             }
             disabled={tab.id == @active}
+            data-status={status(tab.id, @active)}
+            class="data-[status=active]:bg-gray-50 px-6 py-4"
           >
             <%= tab.title %>
           </button>
         <% end %>
       </div>
-
       <%= for {tab, i} <- Enum.with_index(@tab) do %>
         <div
           id={"#{@id}-#{i}-content"}
           data-status={status(tab.id, @active)}
-          class="data-[status=inactive]:hidden"
+          class="bg-gray-50 data-[status=inactive]:hidden"
           data-tab-content
         >
-          <div>
+          <div class="p-4">
             <%= render_slot(tab) %>
           </div>
         </div>

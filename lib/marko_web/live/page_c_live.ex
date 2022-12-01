@@ -5,6 +5,8 @@ defmodule MarkoWeb.PageCLive do
 
   use MarkoWeb, :live_view
 
+  import MarkoWeb.PageComponent
+
   @tabs tab_1: "Page C, Tab 1",
         tab_2: "Page C, Tab 2"
 
@@ -27,15 +29,10 @@ defmodule MarkoWeb.PageCLive do
 
   def render(assigns) do
     ~H"""
-    <div
-      id="page_c"
-      phx-hook="Tracking"
-      data-session-id={@tracking.session_id}
-      data-view={@tracking.view}
-    >
-      <h1>
+    <.page id="page_b" phx-hook="Tracking" tracking={@tracking}>
+      <:title>
         <%= Keyword.fetch!(@tabs, @live_action) %>
-      </h1>
+      </:title>
 
       <.live_component id="tab_list" active={@live_action} module={MarkoWeb.TabListComponent}>
         <:tab id={:tab_1} title="Tab 1" path={~p"/page_c/tab_1"}>
@@ -49,7 +46,7 @@ defmodule MarkoWeb.PageCLive do
           </.link>
         </:tab>
       </.live_component>
-    </div>
+    </.page>
     """
   end
 
